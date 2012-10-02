@@ -1,0 +1,47 @@
+<header class="double-tabs">
+	<div class="first-tab">
+		<div class="logotype">
+			<%= link_to image_tag('/images/icons/logotype.png', :alt => "logo"), "/#{I18n.locale}/" %>
+		</div>
+		<!-- TOP MENU: begin -->
+		<div class="tmenu">
+			<ul>
+				<% @pages = Page.all(:conditions => "is_menu_element = '1'") %>
+				<% for page in @pages do %>
+					<% if page.is_special == '1' %>
+						<li class="marked">
+							<%= link_to_unless_current(page.title, {:class => 'active'}) do 
+							link_to(page.title, "/pages/#{page.id}") 
+							end %></li>
+					<% elsif %>
+						<li><%= link_to page.title, "/#{I18n.locale}/pages/#{page.id}" %></li>
+					<% end %>
+				<% end %>
+				<li class="active">Новости</li>
+			</ul>
+		</div>
+		<!-- TOP MENU: end -->
+	</div>
+	<div class="second-tab">
+		<div class="autorize">
+			<div class="enter">
+				<div class="input" id="input">Логин</div>
+				<div class="input" id="input">Пароль</div>
+				<div class="button-blue">Вход</div>
+				<span class="tide"></span>
+			</div>
+			<div class="register">
+				<a href="">Регистрация</a><a href="">Напомнить пароль</a>
+			</div>
+		</div>
+		<div class="contactus">
+			<div class="phone">
+				(495) 700-34-19
+			</div>
+			<div class="adress">
+				<a href=""><%= t('address') %></a>
+			</div>
+		</div>
+	</div>
+	<span class="tide"></span>
+</header>

@@ -1,0 +1,26 @@
+<script type="text/javascript">
+$(function() {
+	var slider = $('#slider-main').bxSlider({
+	controls: true,
+	prevSelector: '#prev',
+	nextSelector: '#next',
+	prevText: '',
+	nextText: '',
+	onBeforeSlide: function(currentSlide, totalSlides){
+        $('.pager li').removeClass('active');
+        $('.pager li').eq(currentSlide).addClass('active');
+    	}
+	});
+  		
+
+	$('.pager li').click(function(){
+		var thumbIndex = $('.pager li').index(this);
+		slider.goToSlide(thumbIndex);
+ 
+		$('.pager li').removeClass('active');
+		$(this).addClass('active');
+		return false;
+	});
+	$('.pager li:first').addClass('active');
+});
+</script>
