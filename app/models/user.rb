@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role
   # attr_accessible :title, :body
+  before_save do
+  a =  UserEvent.new
+  a.save
+  self.user_e_id = a.id
+  end
 end
