@@ -9,7 +9,7 @@ Eaglefitness::Application.routes.draw do
   devise_for :users
 
   resources :activities do
-  	resources :coaches
+    resources :coaches
   end
   resources :pages
   resources :events

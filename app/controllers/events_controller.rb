@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   layout :change_layout
   def index
     @events = Event.all
-
+    @couches = @events.couch
+    @categories = @events.category
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -84,6 +85,10 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url }
       format.json { head :no_content }
     end
+  end
+  
+  def calendar
+    
   end
 
   def change_layout
