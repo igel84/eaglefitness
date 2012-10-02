@@ -1,0 +1,17 @@
+<section class="boxes">
+	<% @pages = Page.where("is_main = 'true'") %>
+	<% for page in @pages do %>
+	<div class="item">
+		<div class="img">
+			<%= link_to image_tag(page.image_url(:page_thumb).to_s), "/#{I18n.locale}/pages/#{page.id}" %>
+		</div>
+		<div class="content">
+			<h2><%= page.title %></h2>
+			<p><%= page.preview %></p>
+			<%= link_to t('read_more'), "/#{I18n.locale}/pages/#{page.id}", :class => 'button' %>
+		</div>
+		<span class="tide"></span>
+	</div>
+	<% end %>
+	<span class="tide"></span>
+</section>
