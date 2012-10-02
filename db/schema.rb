@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012125949) do
+ActiveRecord::Schema.define(:version => 20121012529969) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20121012125949) do
   create_table "categories", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "description"
   end
 
   create_table "coach_cats", :force => true do |t|
@@ -60,6 +62,10 @@ ActiveRecord::Schema.define(:version => 20121012125949) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "coach_c_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "events", :force => true do |t|
@@ -68,6 +74,10 @@ ActiveRecord::Schema.define(:version => 20121012125949) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "time_start"
+    t.datetime "time_end"
+    t.integer  "category_id"
+    t.integer  "couch_id"
   end
 
   create_table "pages", :force => true do |t|
