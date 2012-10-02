@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @category = Category.find(params[:id])
-    @coaches = Coach.joins(:cats_cs)(:cats_id => @category.id)
+    @coaches = Coach.joins(:cats_cs).where(:cats_id => @category.id)
 
     respond_to do |format|
       format.html # show.html.erb

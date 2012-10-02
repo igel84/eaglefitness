@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012125938) do
+ActiveRecord::Schema.define(:version => 20121012125949) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20121012125938) do
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "categories", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "coach_cats", :force => true do |t|
@@ -62,8 +62,7 @@ ActiveRecord::Schema.define(:version => 20121012125938) do
     t.decimal  "coach_c_id"
   end
 
-  create_table "events", :id => false, :force => true do |t|
-    t.integer  "id",          :null => false
+  create_table "events", :force => true do |t|
     t.string   "title"
     t.string   "value"
     t.text     "description"
@@ -81,6 +80,11 @@ ActiveRecord::Schema.define(:version => 20121012125938) do
     t.string   "is_menu_element", :limit => 1
     t.string   "is_special",      :limit => 1
     t.string   "image"
+  end
+
+  create_table "user_events", :force => true do |t|
+    t.integer "id_user"
+    t.integer "id_event"
   end
 
   create_table "users", :id => false, :force => true do |t|

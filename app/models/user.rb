@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
    ROLES = %w[admin moderator author banned]
    has_many :coaches
+   has_many :user_events
    
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

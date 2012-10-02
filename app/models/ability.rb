@@ -13,11 +13,13 @@ class Ability
     end
   end
 
-  def coach
-    can :manage, Event
+  def user
+    can :read, Event, Pages, Coaches, Categories
   end
+  
    def coach
-    can :read, Event
+    can :manage, Event
+    can :read Page, Coach, Categoriy
   end
 
   def admin
