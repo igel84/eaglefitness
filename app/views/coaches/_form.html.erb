@@ -1,0 +1,20 @@
+<%= form_for(@coach), :html => { :multipart => true }  do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coach.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @coach.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= f.file_field :avatar %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

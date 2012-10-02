@@ -1,5 +1,4 @@
 class Category < ActiveRecord::Base
-  attr_accessible :title
-
   has_many :coaches
+  # attr_accessible :title, :body
 end

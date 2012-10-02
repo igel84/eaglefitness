@@ -1,5 +1,9 @@
 Eaglefitness::Application.routes.draw do
 
+  devise_for :coaches
+
+  resources :categories
+
   devise_for :admins
 
   devise_for :users
