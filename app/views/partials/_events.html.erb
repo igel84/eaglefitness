@@ -1,7 +1,7 @@
 <% if params[:action] == "index" %>
 	<h2><%= link_to t('tabs_header'), "/#{I18n.locale}/events" %></h2>
 	<nav class="lmenu">
-		<% @events = Event.last(6).reverse %>
+		<% @events = Event.all %>
 		<ul>
 		<% for event in @events do %>
 			<li><%= link_to "/#{I18n.locale}/events/#{event.id}" do %>

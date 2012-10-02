@@ -5,6 +5,7 @@ Eaglefitness::Application.routes.draw do
   resources :categories
 
   devise_for :admins
+  match 'calendar' => "events#calendar"
 
   devise_for :users
 
