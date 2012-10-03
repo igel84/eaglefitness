@@ -21,10 +21,14 @@
   </div>
   <p> category</p>
   <div class="field">
-    <%= f.label :value %><br />
-    <%= f.select :category_id, options_for_select(Category.all, "name") %>
+
+    <%= f.select :category_id, options_for_select(Category.all.collect {|c| [ c.name, c.id ] }) %>
   </div>
   <p>start</p>
+    <div class="field">
+    <%= f.label :time_start %><br />
+    <%= f.hidden_field :coach_id, :value => 4 %>
+    <p>Count</p>
     <div class="field">
     <%= f.label :time_start %><br />
     <%= f.text_field :value %>

@@ -9,15 +9,15 @@
     <th></th>
     <th></th>
   </tr>
-
+<% mamba = UserEvent.where("user_id = #{current_user.id}")%>
+<%=ue = mamba.first.id%>
 <% @events.each do |event| %>
-  <tr>
-    <td><%= event.title %></td>
-    <td><%= event.value %></td>
-    <td><%= event.description %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+ <%= event.title%>
+ <%= form_for UserEvent.new, remote: true do |f| %>
+   
+   <%=f.hidden_field :event_id, :value => event.id %>
+   <%=f.hidden_field :user_id, :value => current_user.id %>
+ <%= f.submit%>
+<% end %>
 <% end %>
 </table>

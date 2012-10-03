@@ -1,9 +1,7 @@
 class EventsController < ApplicationController
   layout :change_layout
   def index
-    @events = Event.all
-    @couches = @events.couch
-    @categories = @events.category
+    @events = Event.where(2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -12,20 +10,20 @@ class EventsController < ApplicationController
 
   # GET /events/1
   # GET /events/1.json
-  def show
+  
+ def show
+    
     @event = Event.find(params[:id])
-    @couch = @event.couch
-    @category = @event.category
+     
+
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @event }
+      format.html # events_path
+      format.json { render json: events_path }
     end
   end
 
-  # GET /events/new
-  # GET /events/new.json
   def new
-
+    @user = User.find(:user_id)
     @event = Event.new
 
     respond_to do |format|
@@ -41,17 +39,16 @@ class EventsController < ApplicationController
 
   # POST /events
   # POST /events.json
+
+  
   def create
-    @couch = Couch.find(params[:couch_id])
-    @category = Category.find(params[:cat_id])
-    @event = Event.new(params[:event])
-    @event.categories_id = @category.id
-    @event.couch_id = @couch.id
-    @event.save
+      @event = Event.find(params[:id])
+
+    
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'event was successfully created.' }
-        format.json { render json: @event, status: :created, location: @event }
+        format.html { redirect_to root, notice: 'No pain no gane' }
+        format.json { render json: root, status: "No pain no gane", location: root }
       else
         format.html { render action: "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }

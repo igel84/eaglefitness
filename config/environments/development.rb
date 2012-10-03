@@ -8,6 +8,8 @@ Eaglefitness::Application.configure do
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
+  
+  
   config.gem "cancan"
 
 

@@ -1,17 +1,20 @@
 Eaglefitness::Application.routes.draw do
 
+  resources :user_events
+
   devise_for :coaches
 
   resources :categories
 
-  devise_for :admins
-  match 'calendar' => "events#calendar"
+
+  match 'succses' => "events#succses"
 
   devise_for :users
 
-  resources :activities do
-    resources :coaches
-  end
+
+  resources :coaches
+  resources :users
+
   resources :pages
   resources :events
 
