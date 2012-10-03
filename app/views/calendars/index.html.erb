@@ -1,15 +1,38 @@
-<table>
+<table border="1">
 	<%cat = Category.find(@def_cat_id)%>
-	<%events = Event.where(:category_id => cat)%>
+	<%@events = Event.where(:category_id => cat)%>
     
 	
-		
-	   <tr><%events.each do |e| %>
-	   	<td><%a =  Coach.find(e.coach_id) %>
-	   		<%= a.name %>
-
-	   	</td>
-	   	<%end%>	
-	    </tr>	
-</table>	
-
+	<% b= []%>
+	  <td>
+	   <%events.each do |e| %>
+	   	<tr><%a =  Coach.find(e.coach_id) %>
+	   		<%b << [a.id] %>
+	   		<%=  a.id %>
+	   	</tr>
+	  </td>
+	   	
+	  <%end%>
+	<td>  <%b.each do |id|%>
+	  
+	  
+	   <tr><% events_by_c = Event.where(:coach_id => id)  %>
+	  
+           <% events_by_c.each do |e|%>
+            <%= e.id%>
+         <%end%>
+       </tr>
+	   
+	<%end%>   </td> 
+<%= calendar_for(@events) do |e| %>('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun')
+   <%= e.coaches each do |c| %>
+  <%= t.head do  %>
+   <%= t.r do  %>  
+     <%= c.name %>                   
+  <%= t.day do |day, tasks| %>
+    <%= day.day %>
+    <% tasks.each do |task| %>
+      <%= h(task.name) %>
+    <% end %>
+  <% end %>
+<% end %>

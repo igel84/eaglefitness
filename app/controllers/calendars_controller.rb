@@ -6,6 +6,7 @@ class CalendarsController < ApplicationController
     if !params.blank?
       
     end
+    @def_cat_id = 1
   end
 
   # GET /calendars/1

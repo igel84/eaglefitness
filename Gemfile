@@ -13,6 +13,7 @@ gem 'i18n'
 gem 'devise'
 gem 'cancan'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "watu_table_builder", :require => "table_builder"
 
 # Gems used only for assets and not required
 # in production environments by default.

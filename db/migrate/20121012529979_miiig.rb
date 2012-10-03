@@ -1,6 +1,7 @@
 class Miiig < ActiveRecord::Migration
   def up
-    add_column :events, :name, :string
+    add_column :events, :day, :string
+    
   end
 
   def down
