@@ -10,7 +10,7 @@ Eaglefitness::Application.routes.draw do
   match 'succses' => "events#succses"
 
   devise_for :users
-
+  
 
   resources :coaches
   resources :users

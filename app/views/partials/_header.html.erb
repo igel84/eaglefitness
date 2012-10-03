@@ -24,12 +24,21 @@
 	</div>
 	<div class="second-tab">
 		<div class="autorize">
-			<div class="enter">
-				<div class="input" id="input">Логин</div>
-				<div class="input" id="input">Пароль</div>
-				<div class="button-blue">Вход</div>
-				<span class="tide"></span>
-			</div>
+			
+				<%if !user_signed_in? %>
+				<%= form_for :user, :url => user_session_path do |f| %>
+				<%= f.label :email %><br />
+			     <%= f.email_field :email %>@
+			     <div><%= f.label :password %><br />
+				 <%= f.password_field :password %>Пароль</div>
+
+				<div><%= f.submit "Вход", :class=>"button-blue" %></div>
+				<%end%>
+				<%else%>
+                <div><b><%= link_to "Выход", destroy_user_session_path, :method => :delete %></b><div>
+                					<%end%>
+                					
+			
 			<div class="register">
 				<a href="">Регистрация</a><a href="">Напомнить пароль</a>
 			</div>
