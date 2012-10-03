@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   layout :change_layout
   def index
     @events = Event.where(2)
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -23,12 +24,13 @@ class EventsController < ApplicationController
   end
 
   def new
-    @user = User.find(:user_id)
+    
     @event = Event.new
 
-    respond_to do |format|
+     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }
+    
     end
   end
 
@@ -42,13 +44,14 @@ class EventsController < ApplicationController
 
   
   def create
-      @event = Event.find(params[:id])
+      
+      @event = Event.new(params[:event])
 
     
     respond_to do |format|
       if @event.save
-        format.html { redirect_to root, notice: 'No pain no gane' }
-        format.json { render json: root, status: "No pain no gane", location: root }
+        format.html { redirect_to root_path, notice: 'No pain no gane' }
+        format.json { render json: root_path, status: "No pain no gane", location: root }
       else
         format.html { render action: "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }

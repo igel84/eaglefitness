@@ -16,7 +16,7 @@ class CoachesController < ApplicationController
     end
   end
    def create
-    @user = User.find(params[:id])
+    @a = User.new(params[:id])
     @user.role = 'coach'
     c = CoachC.new
     c.save

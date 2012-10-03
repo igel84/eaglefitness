@@ -1,5 +1,7 @@
 Eaglefitness::Application.routes.draw do
 
+  resources :calendars
+
   resources :user_events
 
   devise_for :coaches

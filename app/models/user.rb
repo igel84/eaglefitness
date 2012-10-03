@@ -12,10 +12,17 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role
   # attr_accessible :title, :body
   
-  def iii(param)
-    UserEvent.find(param)
-  end
+
   
+  def roles=(roles)
+  self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+end
+
+def roles
+  ROLES.reject do |r|
+    ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+  end
+end
 
   before_save do
    a =  UserEvent.new

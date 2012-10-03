@@ -1,0 +1,15 @@
+<table>
+	<%cat = Category.find(@def_cat_id)%>
+	<%events = Event.where(:category_id => cat)%>
+    
+	
+		
+	   <tr><%events.each do |e| %>
+	   	<td><%a =  Coach.find(e.coach_id) %>
+	   		<%= a.name %>
+
+	   	</td>
+	   	<%end%>	
+	    </tr>	
+</table>	
+

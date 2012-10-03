@@ -1,0 +1,22 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Value</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+ <%= event.title%>
+ <%= form_for UserEvent.new, remote: true do |f| %>
+   
+   <%=f.hidden_field :event_id, :value => event.id %>
+   <%=f.hidden_field :user_id, :value => current_user.id %>
+ <%= f.submit%>
+<% end %>
+<% end %>
+</table>
