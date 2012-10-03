@@ -42,12 +42,8 @@ class UserEventsController < ApplicationController
   def create
     @user_event = UserEvent.new(params[:user_event])
   
-       if @message.save
-       flash[:message] = "No pain no gane"
-    else
-       flash[:message] = "OOps Something went wrong"
-    end
-    end
+    redirect_to events_path
+    
   end
 
   # PUT /user_events/1
